@@ -1,5 +1,4 @@
-# Taller-Programaci-n-con-JavaScript
-Simulador de Prestaciones Laborales
+# Taller-Programación-con-JavaScript / Simulador de Prestaciones Laborales
 Universidad El Bosque — Facultad de Comunicación y Creación
 Programa de Creación Digital — Taller de Programación con JavaScript
 
