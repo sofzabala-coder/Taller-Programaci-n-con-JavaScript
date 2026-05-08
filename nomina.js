@@ -19,7 +19,7 @@ let numeroDocumento = "";
 let salario         = 0;
 let comisiones      = 0;
 let horasExtra      = 0;
-let nivelRiesgo     = 1;    // 1 al 5
+let nivelRiesgo     = 1;   
 
 // VALIDACIÓN DE PERFIL
 function validarPerfil(edad) {
@@ -113,7 +113,41 @@ function calcularRetencion(totalIngresos, salud, pension) {
 }
 
 
+// LEER DEL DOM:) 
+function leerformulario() {
+  nombreCompleto  = document.getElementById("nombre").value.trim();
+  edad            = parseInt(document.getElementById("edad").value);
+  tipoDocumento   = document.getElementById("tipoDocumento").value;
+  numeroDocumento = document.getElementById("numeroDocumento").value.trim();
+  salario         = parseFloat(document.getElementById("salario").value);
+  comisiones      = parseFloat(document.getElementById("comisiones").value) || 0;
+  horasExtra      = parseFloat(document.getElementById("horasExtra").value) || 0;
+  nivelRiesgo     = parseInt(document.getElementById("nivelRiesgo").value); 
+}
+
+function calcular() {
+  leerformulario ();
+
+   // Validar documento
+  if (!validarDocumento(tipoDocumento, edad)) {
+    alert("Tipo de documento no corresponde a la edad");
+    return;
+}
+// Validad perfil
+  const perfil = validarPerfil(edad);
+  if (perfil === "menor_de_edad") {
+    alert("No puede continuar, es menor de edad");
+    return;
+  } else if (perfil === "beneficiario") {
+    alert("Es beneficiario por cotizante, no se calculan obligaciones laborales");
+    return;
+  }
+
+  const esPensionado = perfil === "pensionado";
+
+//CALCULAR
+  const resultado = calcularNomina(salario, comisiones, horasExtra, nivelRiesgo, esPensionado);
 
 
-
-
+  console.log(resultado); 
+}
