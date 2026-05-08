@@ -1,5 +1,4 @@
-# Taller-Programaci-n-con-JavaScript
-Simulador de Prestaciones Laborales
+# Taller-Programación-con-JavaScript / Simulador de Prestaciones Laborales
 Universidad El Bosque — Facultad de Comunicación y Creación
 Programa de Creación Digital — Taller de Programación con JavaScript
 
@@ -26,5 +25,6 @@ El taller pedía bloquear o redirigir al usuario según su edad por lo que agreg
 5. Asi mismo el enunciado menciona que cada tipo de documento corresponde a un rango de edad por lo que tambien agregué una validación para eso.
 
 6. Y Implementé el cálculo del Art. 383 del Estatuto Tributario, que era el punto extra del taller:)
+   pdta: No aparecen los commits completos  dado que al inicio tuve complicaciones para guardar y subir el progreso que iba teniendo en el taller inicialmente :)
 
 Sofia Alejandra Cubillos Zabala - 1011093099
