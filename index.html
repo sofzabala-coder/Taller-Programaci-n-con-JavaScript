@@ -1,58 +1,153 @@
 <!DOCTYPE html>
+<!-- Sofia Alejandra Cubillos Zabala - 1011093099 -->
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Calculadora de Nómina 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Nómina 2026</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <form action="" method="post" id="formularioNomina">
+  <header>
+    <div class="header-inner">
+      <div class="header-tag">Colombia · 2026</div>
+      <h1>Simulador de Prestaciones Laborales</h1>
+      <p class="subtitulo">Universidad El Bosque · Facultad de Comunicación y Creación</p>
+    </div>
+  </header>
 
-    <fieldset>
-      <legend>Datos Personales</legend>
+  <main>
 
-      <label for="nombreCompleto">Nombre completo:</label>
-      <input type="text" id="nombreCompleto" name="nombreCompleto" />
+    <section class="tarjeta" id="seccion-personal">
+      <div class="tarjeta-header">
+        <div class="paso-badge">1</div>
+        <h2>Datos personales</h2>
+      </div>
 
-      <label for="edad">Edad:</label>
-      <input type="number" id="edad" name="edad" />
+      <fieldset>
 
-      <label for="tipoDocumento">Tipo de documento:</label>
-      <select id="tipoDocumento" name="tipoDocumento">
-        <option value="RC">RC - Registro Civil</option>
-        <option value="TI">TI - Tarjeta de Identidad</option>
-        <option value="CC">CC - Cédula de Ciudadanía</option>
-      </select>
+        <div class="campo">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: María Gómez Ruiz" />
+        </div>
 
-      <label for="numeroDocumento">Número de documento:</label>
-      <input type="text" id="numeroDocumento" name="numeroDocumento" />
-    </fieldset>
+        <div class="campo">
+          <label for="edad">Edad (años)</label>
+          <input type="number" id="edad" name="edad" min="0" max="120" placeholder="Ej: 30" />
+        </div>
 
-    <fieldset>
-      <legend>Datos Laborales</legend>
+        <div class="campo">
+          <label for="tipoDocumento">Tipo de documento</label>
+          <select id="tipoDocumento" name="tipoDocumento">
+            <option value="">-- Seleccionar --</option>
+            <option value="RC">RC - Registro Civil de Nacimiento</option>
+            <option value="TI">TI - Tarjeta de Identidad</option>
+            <option value="CC">CC - Cédula de Ciudadanía</option>
+            <option value="CE">CE - Cédula de Extranjería</option>
+            <option value="PP">PP - Pasaporte</option>
+          </select>
+        </div>
 
-      <label for="salario">Salario base:</label>
-      <input type="number" id="salario" name="salario" />
+        <div class="campo">
+          <label for="numeroDocumento">Número de documento</label>
+          <input type="text" id="numeroDocumento" name="numeroDocumento" placeholder="Sin puntos ni comas" />
+        </div>
 
-      <label for="comisiones">Comisiones:</label>
-      <input type="number" id="comisiones" name="comisiones" value="0" />
+      </fieldset>
 
-      <label for="horasExtra">Horas extra (valor total):</label>
-      <input type="number" id="horasExtra" name="horasExtra" value="0" />
+      <section class="tarjeta-inner" id="seccion-laboral">
+        <div class="tarjeta-header">
+          <div class="paso-badge">2</div>
+          <h2>Datos laborales</h2>
+        </div>
 
-      <label for="nivelRiesgo">Nivel de riesgo ARL:</label>
-      <select id="nivelRiesgo" name="nivelRiesgo">
-        <option value="1">Riesgo 1 - Mínimo</option>
-        <option value="2">Riesgo 2 - Bajo</option>
-        <option value="3">Riesgo 3 - Medio</option>
-        <option value="4">Riesgo 4 - Alto</option>
-        <option value="5">Riesgo 5 - Máximo</option>
-      </select>
-    </fieldset>
+        <fieldset>
 
-    <input type="button" value="Calcular Nómina" onclick="calcular()" />
+          <div class="campo">
+            <label for="salario">Salario base (COP)</label>
+            <input type="number" id="salario" name="salario" min="0" placeholder="Sin puntos ni comas" />
+          </div>
 
-  </form>
+          <div class="campo">
+            <label for="comisiones">Comisiones (COP)</label>
+            <input type="number" id="comisiones" name="comisiones" min="0" value="0" />
+          </div>
+
+          <div class="campo">
+            <label for="horasExtra">Total horas extra (COP)</label>
+            <input type="number" id="horasExtra" name="horasExtra" min="0" value="0" />
+          </div>
+
+          <div class="campo">
+            <label for="nivelRiesgo">Nivel de riesgo ARL</label>
+            <select id="nivelRiesgo" name="nivelRiesgo">
+              <option value="1">Riesgo I - Mínimo (0.522%)</option>
+              <option value="2">Riesgo II - Bajo (1.044%)</option>
+              <option value="3">Riesgo III - Medio (2.436%)</option>
+              <option value="4">Riesgo IV - Alto (4.350%)</option>
+              <option value="5">Riesgo V - Máximo (6.960%)</option>
+            </select>
+          </div>
+
+        </fieldset>
+      </section>
+
+      <input type="button" class="btn-primary" value="Calcular Nómina" onclick="calcular()" />
+
+    </section>
+
+    <!-- RESULTADOS -->
+    <section class="tarjeta oculto" id="seccion-resultados">
+      <div class="tarjeta-header">
+        <div class="paso-badge">3</div>
+        <h2>Resultados</h2>
+      </div>
+
+      <div class="resultado-persona">
+        <div class="avatar">&#128100;</div>
+        <div class="persona-info">
+          <strong id="res-nombre">—</strong>
+          <span id="res-documento">—</span>
+        </div>
+      </div>
+
+      <div class="resultados-grid">
+
+        <p class="seccion-label">Ingresos</p>
+        <div class="fila"><span class="etiqueta">Salario base</span><span class="valor" id="res-salario">$0</span></div>
+        <div class="fila"><span class="etiqueta">Auxilio de transporte</span><span class="valor" id="res-auxilio">$0</span></div>
+        <div class="fila"><span class="etiqueta">Comisiones</span><span class="valor" id="res-comisiones">$0</span></div>
+        <div class="fila"><span class="etiqueta">Horas extra</span><span class="valor" id="res-horasExtra">$0</span></div>
+        <div class="fila fila-ingresos-total"><span class="etiqueta">Total ingresos</span><span class="valor" id="res-totalIngresos">$0</span></div>
+
+        <div class="divider"></div>
+
+        <div class="fila fila-ibc"><span class="etiqueta">IBC (70% devengado)</span><span class="valor" id="res-ibc">$0</span></div>
+
+        <div class="divider"></div>
+
+        <p class="seccion-label">Deducciones</p>
+        <div class="fila fila-deduccion"><span class="etiqueta">Salud (4% IBC)</span><span class="valor" id="res-salud">$0</span></div>
+        <div class="fila fila-deduccion"><span class="etiqueta">Pensión (4% IBC)</span><span class="valor" id="res-pension">$0</span></div>
+        <div class="fila fila-deduccion"><span class="etiqueta">Fondo de Solidaridad (1%)</span><span class="valor" id="res-solidaridad">$0</span></div>
+        <div class="fila fila-deduccion"><span class="etiqueta">ARL</span><span class="valor" id="res-arl">$0</span></div>
+        <div class="fila fila-deduccion"><span class="etiqueta">Retención en la Fuente</span><span class="valor" id="res-retencion">$0</span></div>
+        <div class="fila fila-deduccion-total"><span class="etiqueta">Total deducciones</span><span class="valor" id="res-totalDeducciones">$0</span></div>
+
+        <div class="fila fila-neto"><span class="etiqueta">Neto a pagar</span><span class="valor" id="res-neto">$0</span></div>
+
+      </div>
+
+      <input type="button" class="btn-secondary" value="← Nueva consulta" onclick="reiniciar()" />
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Sofia Alejandra Cubillos Zabala · 1011093099 · Universidad El Bosque 2026</p>
+  </footer>
 
   <script src="nomina.js"></script>
 
