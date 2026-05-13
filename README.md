@@ -26,5 +26,6 @@ El taller pedía bloquear o redirigir al usuario según su edad por lo que agreg
 
 6. Y Implementé el cálculo del Art. 383 del Estatuto Tributario, que era el punto extra del taller:)
    pdta: No aparecen los commits completos  dado que al inicio tuve complicaciones para guardar y subir el progreso que iba teniendo en el taller inicialmente :)
-
+7. Cambios finales realizados en HTML y CSS:
+ Para esta entrega actualicé el archivo HTML corrigiendo el id del campo de nombre, que estaba como nombreCompleto pero el JavaScript lo buscaba como nombre, también agregué las opciones CE y PP al select de tipo de documento que me faltaban, vinculé el archivo style.css con la etiqueta <link> en el <head> y añadí la sección de resultados al final del formulario para que los cálculos se mostraran en pantalla y no solo en la consola. En cuanto al CSS, creé el archivo style.css con estilos propios para darle una presentación más visual a la página, definí variables de color, apliqué una tipografía más limpia, diseñé las tarjetas de cada paso con bordes redondeados y organicé la sección de resultados diferenciando visualmente los ingresos, las deducciones y el neto a pagar con colores distintos.
 Sofia Alejandra Cubillos Zabala - 1011093099
